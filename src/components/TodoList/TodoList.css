@@ -1,0 +1,33 @@
+.item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border: solid black 2px;
+  height: 70px;
+  width: 70%;
+  padding-right: 10px;
+  margin-bottom: 3px;
+}
+
+.btn_del {
+  width: 100px;
+  height: 30px;
+  /* margin-left: auto; */
+  border-radius: 10px;
+  background: red;
+  color: aqua;
+  font-weight: 500;
+  font-size: 23px;
+  cursor: pointer;
+}
+p {
+  margin: 0;
+}
+
+ul {
+  width: 100%;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
