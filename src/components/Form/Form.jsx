@@ -21,7 +21,7 @@ class Form extends React.Component {
     if (this.state.task !== '') {
       this.props.onSubmit(this.state.task);
     }
-
+    this.props.closeModal();
     this.reset();
   };
 

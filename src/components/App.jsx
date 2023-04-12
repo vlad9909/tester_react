@@ -4,6 +4,7 @@ import Form from './Form';
 import shortid from 'shortid';
 import Filter from './Filter';
 import Modal from './Modal';
+import Clock from './Clock/Clock';
 
 class App extends React.Component {
   state = {
@@ -46,7 +47,20 @@ class App extends React.Component {
   toggleModal = () => {
     this.setState(({ shouModal }) => ({ shouModal: !shouModal }));
   };
+  componentDidMount() {
+    // console.log('didmount');
+    const todos = localStorage.getItem('todos');
+    const todosParsed = JSON.parse(todos);
+    this.setState({ todos: todosParsed });
+  }
 
+  componentDidUpdate(prevProps, prevState) {
+    // console.log('didupdate');
+    if (this.state.todos !== prevState.todos) {
+      // console.log('оновилось поле тудус');
+      localStorage.setItem('todos', JSON.stringify(this.state.todos));
+    }
+  }
   render() {
     const { todos, filter, shouModal } = this.state;
     const complitedTodoCountry = todos.reduce(
@@ -74,7 +88,11 @@ class App extends React.Component {
         {/* <ColorPicer color={color} /> */}
         {shouModal && (
           <Modal onClose={this.toggleModal}>
-            <h1>Halo Vlad</h1>{' '}
+            <Form
+              onSubmit={this.formSubmitHendler}
+              closeModal={this.toggleModal}
+            />
+
             <button type="button" onClick={this.toggleModal}>
               closed
             </button>
@@ -83,7 +101,8 @@ class App extends React.Component {
         <button type="button" onClick={this.toggleModal}>
           open
         </button>
-        <Form onSubmit={this.formSubmitHendler} />
+        <Clock />
+
         <Filter value={filter} onChange={this.changeFilter} />
         <TodoList
           todos={filterTodo}
