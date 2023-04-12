@@ -49,9 +49,9 @@ class App extends React.Component {
   };
   componentDidMount() {
     // console.log('didmount');
-    const todos = localStorage.getItem('todos');
-    const todosParsed = JSON.parse(todos);
-    this.setState({ todos: todosParsed });
+    // const todos = localStorage.getItem('todos');
+    // const todosParsed = JSON.parse(todos);
+    // this.setState({ todos: todosParsed });
   }
 
   componentDidUpdate(prevProps, prevState) {
